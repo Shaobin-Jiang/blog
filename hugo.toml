@@ -1,4 +1,4 @@
-baseURL = 'https://blog.shaobin-jiang.top/'
+baseURL = 'https://shaobin-jiang.github.io/blog/'
 languageCode = 'zh-Hans'
 title = "姜绍彬的博客"
 theme = 'stack'
