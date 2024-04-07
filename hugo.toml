@@ -11,7 +11,7 @@ tag = 'tags'
 
 [params]
 mainSections = ['posts']
-favicon = '/favicon.ico'
+favicon = '/blog/favicon.ico'
 
 [params.sidebar]
 emoji = '😀'
