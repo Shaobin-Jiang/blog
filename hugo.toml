@@ -1,0 +1,83 @@
+baseURL = 'https://blog.shaobin-jiang.top/'
+languageCode = 'zh-Hans'
+title = "姜绍彬的博客"
+theme = 'stack'
+paginate = 6
+defaultContentLanguage = 'zh-cn'
+
+[taxonomies]
+genre = 'categories'
+tag = 'tags'
+
+[params]
+mainSections = ['posts']
+favicon = '/favicon.ico'
+
+[params.sidebar]
+emoji = '😀'
+subtitle = 'Ça ira, mon amour'
+avatar = { src = 'images/avatar.jpg' }
+
+[params.footer]
+since = 2023
+customText = '使用 Hugo + Stack 主题构建'
+
+[params.widgets]
+homepage = [
+  { type = 'search' },
+  { type = 'archives', params = { limit = 10 } },
+  { type = 'categories', params = { limit = 10 } },
+  { type = 'tag-cloud', params = { limit = 20 } },
+]
+
+page = [
+  { type = 'search' },
+  { type = 'toc' },
+  { type = 'categories', params = { limit = 10 } },
+  { type = 'tag-cloud', params = { limit = 20 } },
+]
+
+[params.colorscheme]
+toggle = true
+default = 'light'
+
+[params.article]
+toc = true
+
+[params.imageprocessing]
+cover = {enabled = false}
+content = {enabled = false}
+
+[menu]
+main = [
+  { name = '首页', url = '/', weight = 1, identifier = 'home', params = { icon = 'home', newTab = false } },
+  { name = '归档', url = '/page/archives', weight = 2, identifier = 'archive', params = { icon = 'archives', newTab = false } }
+]
+
+social = [
+  { identifier = 'github', name = 'GitHub 主页', url = 'https://github.com/Shaobin-Jiang', params = { icon = 'brand-github', newTab = true } },
+  { identifier = 'rss', name = 'RSS 订阅', url = '/index.xml', params = { icon = 'rss', newTab = false } }
+]
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[markup.tableOfContents]
+endLevel = 4
+ordered = false
+startLevel = 2
+
+[markup.highlight]
+noClasses = false
+codeFences = true
+guessSyntax = true
+lineNoStart = 1
+lineNos = true
+lineNumbersInTable = true
+tabWidth = 4
+
+[outputs]
+home = ['html', 'rss']
+section = ['html']
+taxonomy = ['html']
+term = ['html']
