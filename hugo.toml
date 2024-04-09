@@ -4,6 +4,7 @@ title = "姜绍彬的博客"
 theme = 'stack'
 paginate = 6
 defaultContentLanguage = 'zh-cn'
+timeZone = 'Asia/Shanghai'
 
 [taxonomies]
 genre = 'categories'
