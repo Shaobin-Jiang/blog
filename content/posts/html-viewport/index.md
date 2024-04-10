@@ -78,7 +78,7 @@ tags:
 
 ![](stackoverflow.jpg)
 
-<center style="color: gray; font-size: 0.8em;">有一说一这几位的评价真快把我整破防了</center>
+<center class="caption">有一说一这几位的评价真快把我整破防了</center>
 
 直到最终，我在 segmentfault 上提问了一下，才终于弄明白问题所在——事实证明，这个特性如果不是别人给我指出来的话，我自己根本不可能查得到。帖子的链接在[这里](https://segmentfault.com/q/1010000044782024?_ea=343938228)。
 
