@@ -5,6 +5,7 @@ theme = 'stack'
 paginate = 6
 defaultContentLanguage = 'zh-cn'
 timeZone = 'Asia/Shanghai'
+hasCJKLanguage = true
 
 [taxonomies]
 genre = 'categories'
