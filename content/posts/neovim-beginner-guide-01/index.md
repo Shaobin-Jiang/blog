@@ -71,7 +71,7 @@ Neovim 之所以这么劝退，是因为它确实很难学。难学并不仅仅�
 
 而如果要输入文字，我们需要按下 <kbd>i</kbd> 键，进入到 `insert mode` 中。此时，如果你的 neovim 没有经过任何配置，那么它的左下角是应该显示 `-- INSERT --` 的。此时，我们就可以愉快地进行输入了，输入的位置位于刚才光标所在处的前面。注意，这里按下的是小写的 <kbd>i</kbd> 键。虽然你会发现大写的 <kbd>I</kbd> 键同样可以让我们开始输入，但后面我们会了解到，二者的功能是有区别的。
 
-![](/images/neovim-beginner-guide/insert-mode.jpg)
+![](insert-mode.jpg)
 
 在 `insert mode` 当中，很多我们习惯的输入方式都是可以沿用的。比如说，按 <kbd>Enter</kbd> 换行，按 <kbd>Home</kbd> 和 <kbd>End</kbd> 跳转到行首 / 行尾，按上下左右移动光标等。但是，更多更方便更常用的操作并不是在 `insert mode` 中、而是在 `normal mode` 中进行的。而当我们想要回到 `normal mode`，可以按 <kbd>Esc</kbd> 键。
 
