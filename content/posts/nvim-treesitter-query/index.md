@@ -1,8 +1,8 @@
 ---
 title: 编写 nvim-treesitter 的 query
 description: 更好地自定义高亮、隐藏文本、缩进等
-date: 2024-06-04 14:55:29
-lastmod: 2024-06-04 14:55:29
+date: 2024-06-06 13:00:00
+lastmod: 2024-06-06 13:00:00
 image: cover.jpg
 categories:
   - Tools
