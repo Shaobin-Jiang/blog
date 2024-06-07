@@ -5,4 +5,5 @@ layout: "search"
 outputs:
     - html
     - json
+exclude: true
 ---

@@ -26,7 +26,7 @@
         {{- with .OutputFormats.Get "RSS" -}}
         {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
         {{- end -}}
-        {{ range $pages }}
+        {{ range where .Site.RegularPages "Params.exclude" "ne" true }}
         {{- $content := safeHTML (.Summary | html) -}}
         {{- if .Site.Params.rssFullContent -}}
         {{- $content = safeHTML (replaceRE "blog/" (printf "%s" "") .Content | html) -}}
