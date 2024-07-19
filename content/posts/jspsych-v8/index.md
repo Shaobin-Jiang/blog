@@ -99,6 +99,7 @@ let child_timeline = {
 不难看到变化在哪里。首先，新版本中，当 `loop_function` 返回 `true` 的时候，不会再执行 `conditional_function` 和 `on_timeline_start` 了——它们只会在第一次循环的一开始执行。再者，`on_timeline_finish` 被挪到了 `loop_function` 后面，只有当 `loop_function` 返回 `false`、时间线不再循环之后，才会执行 `on_timeline_finish` 一次。
 
 ```javascript
+let counter = 0;
 let child_timeline = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: 'hello world',
@@ -107,13 +108,17 @@ let child_timeline = {
         alert('conditional function');
         return true;
     },
-    repetitions: 3,
+    loop_function: function () {
+        counter++;
+        return counter < 2;
+    }
 };
 ```
 
 如果你仍然依赖旧版本的行为，可以在外层再嵌套一层时间线，然后把循环相关的代码（不管是 `repetitions` 还是 `loop_function`）挪到外层的时间线。
 
 ```javascript
+let counter = 0;
 let child_timeline = {
     timeline: [
         {
@@ -126,7 +131,10 @@ let child_timeline = {
             },
         },
     ],
-    repetitions: 3,
+    loop_function: function () {
+        counter++;
+        return counter < 2;
+    }
 };
 ```
 
