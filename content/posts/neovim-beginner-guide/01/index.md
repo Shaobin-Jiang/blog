@@ -2,8 +2,8 @@
 title: Neovim 入门教程 01——初识 Neovim
 description: 关于 neovim 最最最基础的认识
 date: 2024-01-07 15:00:00
-lastmod: 2024-01-07 15:00:00
-image: cover.jpg
+lastmod: 2024-08-01 19:20:00
+image: ./posts/neovim-beginner-guide/cover.jpg
 categories:
   - Tutorials
 tags:
