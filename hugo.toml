@@ -2,10 +2,12 @@ baseURL = 'https://shaobin-jiang.github.io/blog/'
 languageCode = 'zh-Hans'
 title = "姜绍彬的博客"
 theme = 'stack'
-paginate = 6
 defaultContentLanguage = 'zh-cn'
 timeZone = 'Asia/Shanghai'
 hasCJKLanguage = true
+
+[pagination]
+pagerSize = 6
 
 [taxonomies]
 genre = 'categories'
