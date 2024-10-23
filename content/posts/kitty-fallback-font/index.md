@@ -70,7 +70,7 @@ fc-list : family spacing outline scalable | grep -e spacing=100 -e spacing=90 | 
 </fontconfig>
 ```
 
-然后再次查看字体：
+然后运行`fc-cache -r`并再次查看字体：
 
 ![](cover.jpg)
 
