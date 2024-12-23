@@ -22,6 +22,8 @@ tags:
 
 ![](insert-mode.jpg)
 
+关于这个插入的位置，还是需要详细说一说。假设我们有这样一段文字：`hello world`，此时在 normal mode 下光标位于 `d` 上，那么看上去应该是这样的：`hello worl█A`。此时如果按 <kbd>i</kbd> 进入 insert mode，那么插入的位置位于光标的前面，也就是 l 和 d 之间。
+
 注意，这里按下的是小写的 <kbd>i</kbd> 键。虽然你会发现大写的 <kbd>I</kbd> 键同样可以让我们开始输入，但后面我们会了解到，二者的功能是有区别的。
 
 在 insert mode 当中，我们习惯的很多输入方式都是可以沿用的。比如说，按 <kbd>Enter</kbd> 换行，按 <kbd>Home</kbd> 和 <kbd>End</kbd> 跳转到行首 / 行尾，按上下左右移动光标等。但是，更多更方便更常用的操作并不是在 insert mode 中、而是在 normal mode 中进行的。而当我们想要回到 normal mode，可以按 <kbd>Esc</kbd> 键。
