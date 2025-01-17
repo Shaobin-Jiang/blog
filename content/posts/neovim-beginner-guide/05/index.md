@@ -18,7 +18,7 @@ Warning: 本讲内容略有难度，而且体量巨大，请酌情慢慢消化�
 
 在 neovim 中，我们可以使用 `vim.keymap.set(mode, lhs, rhs, opts)` 来绑定一个快捷键。可以看到，该 api 接受 4 个参数，它们分别是：
 
-- `mode`: 快捷键生效的模式，可以是一个字符串（仅对单一模式生效），也可以是一个 table（类似于 array 和 object 的混合，即，其中的元素可以没有键名也可以是键值对，此时快捷键对多个模式生效）；这些模式都由一个字母构成，例如 `"n"` (normal mode) / `"i"` (insert mode) / `"c"` (command mode)...
+- `mode`: 快捷键生效的模式，可以是一个字符串（仅对单一模式生效），也可以是一个 table（类似于 array 和 object 的混合，即，其中的元素可以没有键名也可以是键值对，此时快捷键对多个模式生效）；这些模式都由一个字母构成，例如 `"n"` (normal mode) / `"i"` (insert mode) / `"c"` (command-line mode)...
 - `lhs`: 快捷键的按键，是一个字符串；其中，以 <kbd>Ctrl</kbd> 开头的按键表示为 `<C->`，例如 `<C-a>` 就表示 <kbd>Ctrl</kbd> + <kbd>a</kbd>；以 <kbd>Alt</kbd> 开头的按键表示为 `<A->`，例如 `<A-b>` 就表示 <kbd>Alt</kbd> + <kbd>b</kbd>
 - `rhs`: 快捷键绑定的功能，可以是另外一组按键，也可以是一个 lua 函数
 - `opts`: 又一个 table，包含了对这个快捷键的一些额外设置，这个我们在本讲后面单开一节进行说明
@@ -29,7 +29,7 @@ Warning: 本讲内容略有难度，而且体量巨大，请酌情慢慢消化�
 vim.keymap.set("n", "<C-a>b", ":lua print('hello world')<CR>", { silent = true })
 ```
 
-为了方便起见，我们可以直接在 command mode 下运行这行命令（记得以 `:lua` 开头），反正我们后续也不需要保留这行命令，这样做还可以省去重启 neovim 的麻烦。
+为了方便起见，我们可以直接在 command-line mode 下运行这行命令（记得以 `:lua` 开头），反正我们后续也不需要保留这行命令，这样做还可以省去重启 neovim 的麻烦。
 
 这里，第一个参数表示的这个快捷键在 normal mode 下生效。第二个参数表示我们绑定的快捷键是 <kbd>Ctrl</kbd> + <kbd>a</kbd> + <kbd>b</kbd>——注意，这里只要保证 <kbd>Ctrl</kbd> 和 <kbd>a</kbd> 同时按下即可。第三个参数是对应的按键，我们想要在 normal mode 下打印 "hello world"，就需要先按下冒号，然后输入命令，最后敲下回车——`<CR>` 就表示回车，如果你希望你的命令被执行，一定不要忘记 `<CR>`！！！关于第四个参数，我们这里还是不多说，只需要看一下 table 的形式即可——table 都是包裹在一对大括号里面，对于键值对，不是用冒号分隔，而是用等号连接。
 
@@ -43,7 +43,7 @@ vim.keymap.set("n", "<C-a>b", ":lua print('hello world')<CR>", { silent = true }
 vim.keymap.set({ "n", "i" }, "<C-a>b", ":lua print('hello world')<CR>", { silent = true })
 ```
 
-吗？我们说过，这里 `rhs` 是**按键**，那么在 insert mode 下按下这些按键，会执行命令吗？答案是不会，它们只会被作为文本输入到我们的文件中。所以，如果要确保我们后面的内容是在 command mode 下输入的，可以将 `:` 替换为 `<Cmd>`：
+吗？我们说过，这里 `rhs` 是**按键**，那么在 insert mode 下按下这些按键，会执行命令吗？答案是不会，它们只会被作为文本输入到我们的文件中。所以，如果要确保我们后面的内容是在 command-line mode 下输入的，可以将 `:` 替换为 `<Cmd>`：
 
 ```lua
 vim.keymap.set({ "n", "i" }, "<C-a>b", "<Cmd>lua print('hello world')<CR>", { silent = true })
@@ -51,7 +51,7 @@ vim.keymap.set({ "n", "i" }, "<C-a>b", "<Cmd>lua print('hello world')<CR>", { si
 
 这里，我们插播又一条 neovim 编辑小技巧——如何快速在一行内定位到冒号呢？我们可以使用 <kbd>f</kbd> 快捷键，其作用是在当前行内向右找到第一个目标字符，例如 `f:` 就会向右找到第一个冒号并将光标移动到冒号上；当然，如果你的光标现在就已经在目标字符右面了，可以使用 <kbd>F</kbd> 快捷键，它会向左查找——这两个快捷键前面可以加上数字，例如 `2f:` 就是找到第二个冒号。如果目标不存在，那么光标**不会移动**。
 
-> 这里也有必要补充一下 `<Cmd>` 的作用。前面我们说需要从 normal mode 进入 command mode，但这并不准确，我们也可以在其他模式中直接进入 command mode（相应地，执行完命令也会回到原来的模式），例如从 insert mode 进入 command mode 的快捷键就是 `<C-o>:`。`<Cmd>` 的作用就是可以让我们直接无视不同模式进入 command mode 的不同快捷键，直接使用一个统一的描述方式。
+> 这里也有必要补充一下 `<Cmd>` 的作用。前面我们说需要从 normal mode 进入 command-line mode，但这并不准确，我们也可以在其他模式中直接进入 command-line mode（相应地，执行完命令也会回到原来的模式），例如从 insert mode 进入 command-line mode 的快捷键就是 `<C-o>:`。`<Cmd>` 的作用就是可以让我们直接无视不同模式进入 command-line mode 的不同快捷键，直接使用一个统一的描述方式。
 
 现在，再在 insert mode 中按下这个快捷键——你会发现它没有被输出到文本中了，但是好像也没有被打印出来。其实，它被打印出来了，只是因为打印的那个区域被用来显示当前的模式了（“-- 插入 --”）所以看不到打印的内容。不信的话，我们可以禁用这个模式显示：`:lua vim.opt.showmode=false`，再在 insert mode 中按下快捷键，现在我们想要的内容就被打印出来了。
 
@@ -143,7 +143,7 @@ vim.keymap.set("n", "k", "j", { remap = true })
 
 ### 5.2 `silent`
 
-有些时候，我们的快捷键对应的功能本身并不会有什么输出。这个时候，你会发现，如果我们的 `rhs` 是一条命令，那么这条命令会在 command line 被显示出来。经过这段时间的观察，你应该也发现了，command mode 下输入的命令在执行后不会被清空。例如：
+有些时候，我们的快捷键对应的功能本身并不会有什么输出。这个时候，你会发现，如果我们的 `rhs` 是一条命令，那么这条命令会在 command line 被显示出来。经过这段时间的观察，你应该也发现了，command-line mode 下输入的命令在执行后不会被清空。例如：
 
 ```lua
 vim.keymap.set("n", ",a", ":lua a=1<CR>", {})
