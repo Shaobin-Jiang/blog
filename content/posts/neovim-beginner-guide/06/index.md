@@ -101,7 +101,7 @@ require("lazy").setup({
 
 - <kbd>o</kbd>：与 <kbd>O</kbd> 对应，是在下方插入一行并进入 insert mode
 - <kbd>A</kbd>：与 <kbd>a</kbd> 对应，将光标移至行末并进入 insert mode
-- <kbd>I</kbd>：与 <kbd>i</kbd> 对应，将光标移至行首并进入 insert mode
+- <kbd>I</kbd>：与 <kbd>i</kbd> 对应，将光标移至行首第一个非空白字符并进入 insert mode
 
 回到 lazy 的使用上，现在我们创建 `lua/plugins` 文件夹，然后在里面创建一个新的文件：`tokyonight.lua`——注意，文件的命名与实际的功能毫无关系，这样命名只是因为我们接下来安装的主题叫做 tokyonight。
 
