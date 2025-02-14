@@ -2,7 +2,7 @@
 title: Neovim 入门教程 09——LSP (第一部分)
 description: 了解、安装 lsp 并将 lsp 附加到 buffer 上
 date: 2025-02-12 22:00:00
-lastmod: 2025-02-12 22:00:00
+lastmod: 2025-02-13 14:00:00
 image: ./posts/neovim-beginner-guide/cover.jpg
 categories:
   - Tutorials
@@ -31,6 +31,8 @@ tags:
 
 - 获取语言服务器——这些是第三方提供的，我们要像安装插件一样安装这些服务器
 - 对 neovim lsp 处理过的返回信息进行展示——补全、error 等，这部分内容我们可以依赖一些插件
+
+其实，语言服务器这个概念倒也不是微软首创，毕竟把语言解析和编辑器本身解耦是一件很符合直觉的事情。但是，lsp 的重要意义在于自己实现了一套标准的协议，以前一种语言服务器可能对应了一种通讯的方式，非常麻烦，但是有了 lsp 之后，这种差异被抹平了。
 
 ## 2 安装语言服务器——使用 Mason
 
@@ -317,3 +319,42 @@ opts = {
     }
 }
 ```
+
+---
+
+本讲的内容量非常庞大，涉及的知识点也非常繁杂。我们这里不妨再来做一些小练习，试着来为 python 和原生的网页开发（HTML + CSS + JavaScript）配置 lsp：
+
+<details>
+    <summary>解析</summary>
+
+在经过我们上面的封装之后，安装 lsp 已经变得非常简单了，这里我们只需要找到相应的 lsp 进行安装并阅读文档进行必要的设置即可。
+
+对于 python，我个人推荐 pyright，当然你也可以选择 jedi 或者是其他的工具。寻找 lsp 的时候，你可以在前面提到的 lsp 文档中进行寻找。
+
+对于前端开发，我们需要 html-lsp、css-lsp、typescript-language-server 来负责原生开发的三件套，以及前端开发常用的 emmet 的 lsp emmet-ls。
+
+为了方便，我们这里直接调用一个循环来把包括前面 lua 的配置全部写在一块：
+
+```lua
+local servers = {
+    ["lua-language-server"] = {
+        settings = {
+            Lua = {
+                diagnostics = {
+                    globals = { "vim" },
+                },
+            }
+        }
+    },
+    pyright = {},
+    ["html-lsp"] = {},
+    ["css-lsp"] = {},
+    ["typescript-language-server"] = {},
+    ["emmet-ls"] = {},
+}
+
+for server, config in pairs(servers) do
+    setup(server, config)
+end
+```
+</details>
