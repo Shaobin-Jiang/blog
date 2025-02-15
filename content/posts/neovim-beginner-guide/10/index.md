@@ -298,3 +298,9 @@ local function setup(name, config)
     require("lspconfig")[lsp].setup(config)
 end
 ```
+
+## 4 使用 Snippets
+
+这一部分要讲的内容其实不多，因为我们在安装 blink 的时候顺手也安装了 friendly-snippets 并且在 sources 中设置了 snippet，所以现在我们已经可以正常使用了。例如，我们可以在一个 html 文件中输入 `html5`，就会为我们自动补全 html 的基础代码。
+
+不过，我们可不只是使用插件提供的 snippet，如果可以自己定义一些 snippet 的话，对我们的开发、写作等工作都有着很大的帮助。blink 默认支持的是 VsCode 格式的 snippet，可以参照其[官方文档](https://code.visualstudio.com/docs/editor/userdefinedsnippets)。默认情况下，blink 会在 neovim 的配置路径下的 `snippets/` 文件夹下寻找 snippet，如果你要给 markdown 写 snippet 就把文件放在 `markdown.json` 文件中，以此类推。
