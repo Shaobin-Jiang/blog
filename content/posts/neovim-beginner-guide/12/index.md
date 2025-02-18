@@ -55,6 +55,8 @@ foo("world")
 
 ## 2 安装 nvim-treesitter
 
+注意，在开始之前，安装 nvim-treesitter 需要 C 的编译器。
+
 我们创建 `lua/plugins/nvim-treesitter.lua`：
 
 ```lua
