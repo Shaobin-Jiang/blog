@@ -20,7 +20,7 @@ tags:
 - `pattern`: 事件的模式，取决于具体的事件类型，例如 `BufRead` 事件可以是 `BufRead *.txt`，后面的 `*.txt` 就是模式，即仅对 txt 格式的文件触发 `BufRead`
 - `buffer`: 触发事件的 buffer id，如果不设置则为所有 buffer 添加 autocmd；不可以和 `pattern` 一起使用
 - `desc`: 对 autocmd 的描述
-- `callback`: 事件触发的时候执行的函数，该函数接受一个 table 作为传入参数，具体参数想见 `:h nvim_create_autocmd` 的 event-args 部分
+- `callback`: 事件触发的时候执行的函数，该函数接受一个 table 作为传入参数，具体参数详见 `:h nvim_create_autocmd` 的 event-args 部分
 - `once`: 是否只触发一次，默认为 `false`
 
 下面我们来实操一下。比如说，我想要在进入 insert mode 的时候在 cmdline 打印文字，就可以这样做：
