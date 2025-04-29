@@ -2,7 +2,7 @@
 title: Lspsaga 查看文档时如何直接跳转到浮动窗口中
 description: 和我们一贯的做法一样，在调用插件的时候魔改源函数
 date: 2024-08-22 14:30:00
-lastmod: 2024-08-22 14:30:00
+lastmod: 2025-04-29 14:30:00
 image: cover.jpg
 categories:
   - Tools
@@ -122,4 +122,12 @@ end
 
 这里值得注意的是，`new_float` 的调用是 `:new_float` 而非 `.new_float`，前者相当于隐式地传入了一个 `self`。所以，由于我使用了 `win.new_float` 的方法定义函数，所以在函数的传入参数中要在开头加上一项。
 
-问题解决
+问题解决。
+
+---
+
+2025 年 4 月 29 日更新：
+
+经 GitHub Issue 中一位朋友的热心提醒，我发现作者所说的 <kbd>K</kbd><kbd>K</kbd> 是大写的 K。经验证，如果将 <kbd>K</kbd> 绑定到 `Lspsaga hover_doc` 后，即在浮窗显示后再次调用这个命令，确实会直接进入浮窗中。
+
+然而，这种做法仍然存在弊端。和前面我们被迫使用 `defer_fn` 时的问题一样，过快地两次调用 `Lspsaga hover_doc` 仍然无法跳转到浮窗中。所以，歪打正着，本文的做法似乎仍然是更优的解法。
