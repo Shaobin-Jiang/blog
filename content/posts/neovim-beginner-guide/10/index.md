@@ -58,7 +58,9 @@ opts = {
     },
     sources = {
         default = { "path", "snippets", "buffer", "lsp" },
-        cmdline = function()
+    },
+    cmdline = {
+        sources = function()
             local cmd_type = vim.fn.getcmdtype()
             if cmd_type == "/" or cmd_type == "?" then
                 return { "buffer" }
@@ -68,6 +70,14 @@ opts = {
             end
             return {}
         end,
+        keymap = {
+            preset = "super-tab",
+        },
+        completion = {
+            menu = {
+                auto_show = true,
+            },
+        },
     },
 }
 ```
