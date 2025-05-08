@@ -153,7 +153,7 @@ return {
 }
 ```
 
-例如，我们可以通过 `require("mason-lspconfig.mappings.server").package_to_lspconfig["lua-language-server"]` 获取 lua-language-server 在 nvim-lspconfig 中的名称。
+例如，我们可以通过 `require("mason-lspconfig").get_mappings().package_to_lspconfig["lua-language-server"]` 获取 lua-language-server 在 nvim-lspconfig 中的名称。
 
 > mason-lspconfig 还有一个功能，允许我们设置一个 `ensure_installed` 的列表，这个列表中的 lsp 会被自动安装。但是我选择不用这个功能，因为 mason 并不仅负责安装 lsp，后面我们会看到它还负责安装 formatter 之类的东西，而这些没有办法通过 mason-lspconfig 自动安装，为了统一，我选择完全自己编码进行安装。
 
@@ -173,7 +173,7 @@ return {
             package:install()
         end
 
-        local nvim_lsp = require("mason-lspconfig.mappings.server").package_to_lspconfig["lua-language-server"]
+        local nvim_lsp = require("mason-lspconfig").get_mappings().package_to_lspconfig["lua-language-server"]
         require("lspconfig")[nvim_lsp].setup({})
     end,
 }
@@ -216,7 +216,7 @@ return {
             package:install()
         end
 
-        local nvim_lsp = require("mason-lspconfig.mappings.server").package_to_lspconfig["lua-language-server"]
+        local nvim_lsp = require("mason-lspconfig").get_mappings().package_to_lspconfig["lua-language-server"]
         require("lspconfig")[nvim_lsp].setup({})
 
         vim.cmd("LspStart")
@@ -267,7 +267,7 @@ local function setup(name, config)
         package:install()
     end
 
-    local lsp = require("mason-lspconfig.mappings.server").package_to_lspconfig[name]
+    local lsp = require("mason-lspconfig").get_mappings().package_to_lspconfig[name]
     require("lspconfig")[lsp].setup(config)
 end
 

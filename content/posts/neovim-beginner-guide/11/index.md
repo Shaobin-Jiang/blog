@@ -126,7 +126,7 @@ local function setup(name, config)
         package:install()
     end
 
-    local lsp = require("mason-lspconfig.mappings.server").package_to_lspconfig[name]
+    local lsp = require("mason-lspconfig").get_mappings().package_to_lspconfig[name]
     config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
 
     -- 添加在这里
