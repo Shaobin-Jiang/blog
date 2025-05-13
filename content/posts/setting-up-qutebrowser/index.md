@@ -13,7 +13,7 @@ tags:
 
 很长一段时间，我经常会问自己一个问题：一味追求全键盘操作真的有必要吗？
 
-我是一名 neovim 用户，编辑工作已经完全脱离了鼠标；而在体验到了不需要反复挪动右手去拿鼠标的舒适之后，我愈发希望在其他使用场景下也可以完全依赖键盘。于是，我开始折腾平铺桌面管理器，从在 linux 上捣鼓 hyprland 到现在在 mac 上完全迁移到 aerospace + sketchybar。我使用鼠标的时间确实越来越少，但是却始终有一处使用场景，我没有办法拜托鼠标。
+我是一名 neovim 用户，编辑工作已经完全脱离了鼠标；而在体验到了不需要反复挪动右手去拿鼠标的舒适之后，我愈发希望在其他使用场景下也可以完全依赖键盘。于是，我开始折腾平铺桌面管理器，从在 linux 上捣鼓 hyprland 到现在在 mac 上完全迁移到 aerospace + sketchybar。我使用鼠标的时间确实越来越少，但是却始终有一处使用场景，我没有办法摆脱鼠标。
 
 浏览器。
 
@@ -355,6 +355,9 @@ if CommandLine.arguments.count > 1 {
 我将其命名为 `cursor.swift`，并在 qutebrowser 中添加了下述快捷键：
 
 ```python
+import os
+CURSOR_PATH = os.path.join(os.environ["HOME"], ".qutebrowser", "cursor.swift")
+
 {
     "\\c": f"spawn swift {CURSOR_PATH} center",
     "\\h": f"spawn swift {CURSOR_PATH} left",
@@ -387,6 +390,7 @@ qutebrowser 默认情况下基于 css 选择器选中可以 hint 的元素，这
 (function () {
     'use strict';
 
+    const class_name = 'qutebrowser-custom-hint';
     const old_add_event_listener = Element.prototype.addEventListener;
     Element.prototype.addEventListener = function () {
         if (arguments[0] === 'click') {
