@@ -2,7 +2,7 @@
 title: Neovim 入门教程 11——LSP (第三部分)
 description: 代码格式化及其他零碎的功能
 date: 2025-02-16 17:00:00
-lastmod: 2025-02-16 17:00:00
+lastmod: 2025-06-13 13:30:00
 image: ./posts/neovim-beginner-guide/cover.jpg
 categories:
   - Tutorials
@@ -134,7 +134,7 @@ local function setup(name, config)
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false
     end
-    require("lspconfig")[lsp].setup(config)
+    vim.lsp.config(lsp, config)
 end
 ```
 

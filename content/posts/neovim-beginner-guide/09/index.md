@@ -2,7 +2,7 @@
 title: Neovim 入门教程 09——LSP (第一部分)
 description: 了解、安装 lsp 并将 lsp 附加到 buffer 上
 date: 2025-02-12 22:00:00
-lastmod: 2025-02-13 14:00:00
+lastmod: 2025-06-13 13:30:00
 image: ./posts/neovim-beginner-guide/cover.jpg
 categories:
   - Tutorials
@@ -38,7 +38,7 @@ tags:
 
 ### 2.1 安装 Mason 并学习安装第一个 lsp
 
-在插件安装那一部分，我们就提到过手动管理插件的麻烦之处。对于语言服务器的安装，情况也是一样的，我们的确可以手动下载、引入这些 server，但是非常麻烦，所以不如用一个“包管理器”去进行更方便的管理。对于 lsp 来说，我们要使用的工具叫做 [Mason](https://github.com/williamboman/mason.nvim)。
+在插件安装那一部分，我们就提到过手动管理插件的麻烦之处。对于语言服务器的安装，情况也是一样的，我们的确可以手动下载、引入这些 server，但是非常麻烦，所以不如用一个“包管理器”去进行更方便的管理。对于 lsp 来说，我们要使用的工具叫做 [Mason](https://github.com/mason-org/mason.nvim)。
 
 在安装之前，我们需要确保我们使用的系统安装了以下内容（这部分内容可以在 README 中找到）：
 
@@ -63,7 +63,7 @@ tags:
 
 ```lua
 return {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     event = "VeryLazy",
     opts = {},
 }
@@ -97,7 +97,7 @@ end
 
 ```lua
 return {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     event = "VeryLazy",
     opts = {},
     config = function (_, opts)
@@ -126,7 +126,7 @@ return {
 
 ```lua
 return {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     event = "VeryLazy",
     dependencies = {
         "neovim/nvim-lspconfig",
@@ -135,19 +135,19 @@ return {
 }
 ```
 
-然后，我们就要在 `config` 中对已经安装好的 lsp 进行调用了。调用方式很简单，这个插件本身并不需要我们手动 setup，只需要运行 `require("lspconfig")[<lsp-name>].setup(<config>)` 就可以完成插件的调用。
+然后，我们就要在 `config` 中对已经安装好的 lsp 进行调用了。调用方式很简单，这个插件本身并不需要我们手动 setup，只需要运行 `vim.lsp.config(<lsp-name>, <config>)` 就可以完成插件的调用。
 
 但是，非常讨厌的是，这个插件的 lsp 命名规则和 mason 是不一样的！比如，mason 中的 lua-language-server 在这里叫做 lua_ls。我不清楚为什么会有这种命名的差异，但我知道的是，如果我们安装的 lsp 变多了，那么需要手动修改 lsp 名字的场景就会变多，编写配置就会变得麻烦。
 
-所以，在进行 lspconfig 的使用之前，我们还要再引入一个插件：[mason-lspconfig](williamboman/mason-lspconfig.nvim)，这个插件可以将 mason 中的 lsp 的名字转换为 nvim-lspconfig 中对应的名称：
+所以，在进行 lspconfig 的使用之前，我们还要再引入一个插件：[mason-lspconfig](mason-org/mason-lspconfig.nvim)，这个插件可以将 mason 中的 lsp 的名字转换为 nvim-lspconfig 中对应的名称：
 
 ```lua
 return {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     event = "VeryLazy",
     dependencies = {
         "neovim/nvim-lspconfig",
-        "williamboman/mason-lspconfig.nvim",
+        "mason-org/mason-lspconfig.nvim",
     },
     -- 下面的代码不变
 }
@@ -161,7 +161,7 @@ return {
 
 ```lua
 return {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     event = "VeryLazy",
     opts = {},
     config = function (_, opts)
@@ -174,7 +174,7 @@ return {
         end
 
         local nvim_lsp = require("mason-lspconfig").get_mappings().package_to_lspconfig["lua-language-server"]
-        require("lspconfig")[nvim_lsp].setup({})
+        vim.lsp.config(nvim_lsp, {})
     end,
 }
 ```
@@ -204,7 +204,7 @@ Docs for active configs: ~
 
 ```lua
 return {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     event = "VeryLazy",
     opts = {},
     config = function (_, opts)
@@ -217,7 +217,7 @@ return {
         end
 
         local nvim_lsp = require("mason-lspconfig").get_mappings().package_to_lspconfig["lua-language-server"]
-        require("lspconfig")[nvim_lsp].setup({})
+        vim.lsp.config(nvim_lsp, {})
 
         vim.cmd("LspStart")
     end,
@@ -245,7 +245,7 @@ vim.diagnostic.config({ update_in_insert = true })
 在配置 lsp 的时候，我们**一定**要看[文档](https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md)，文档中可能对 setup lsp 的时候可以传入怎样的参数进行了说明，例如 lua-language-server 就以外链的形式提供了文档。比如说，上面我们的 `vim` 被加上了 warning，就是因为 lua-language-server 并不认识这个变量，我们需要在配置中将其显式标记为全局变量：
 
 ```lua
-require("lspconfig")[nvim_lsp].setup({
+vim.lsp.config(nvim_lsp, {
     settings = {
         Lua = {
             diagnostics = {
@@ -268,7 +268,7 @@ local function setup(name, config)
     end
 
     local lsp = require("mason-lspconfig").get_mappings().package_to_lspconfig[name]
-    require("lspconfig")[lsp].setup(config)
+    vim.lsp.config(lsp, config)
 end
 
 setup("lua-language-server", {

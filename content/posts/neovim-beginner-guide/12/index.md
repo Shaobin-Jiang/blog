@@ -2,7 +2,7 @@
 title: Neovim 入门教程 12——使用 nvim-treesitter
 description: Treesitter 的作用是什么？它和 nvim-treesitter 的关系是什么？
 date: 2025-02-17 15:00:00
-lastmod: 2025-02-17 15:00:00
+lastmod: 2025-06-13 13:30:00
 image: ./posts/neovim-beginner-guide/cover.jpg
 categories:
   - Tutorials
@@ -63,6 +63,7 @@ foo("world")
 return {
     "nvim-treesitter/nvim-treesitter",
     main = "nvim-treesitter.configs",
+    branch = "master", -- 详见本系列的附录
     event = "VeryLazy",
     opts = {
         ensure_installed = { "lua" },

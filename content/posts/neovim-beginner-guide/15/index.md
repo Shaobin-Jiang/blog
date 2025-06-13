@@ -2,7 +2,7 @@
 title: Neovim 入门教程 15——使用 autocmd
 description: 使用事件功能，强化我们的配置
 date: 2025-02-21 22:00:00
-lastmod: 2025-02-21 22:00:00
+lastmod: 2025-06-13 13:30:00
 image: ./posts/neovim-beginner-guide/cover.jpg
 categories:
   - Tutorials
@@ -77,7 +77,7 @@ vim.api.nvim_create_autocmd("User", {
 
 ```lua
 {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     event = "VeryLazy",
     config = function (_, opts)
         -- 此处省去之前的配置代码

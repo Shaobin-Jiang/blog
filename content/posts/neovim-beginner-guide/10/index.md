@@ -2,7 +2,7 @@
 title: Neovim 入门教程 10——LSP (第二部分)
 description: 使用 lsp 进行补全
 date: 2025-02-14 20:00:00
-lastmod: 2025-02-14 20:00:00
+lastmod: 2025-06-13 13:30:00
 image: ./posts/neovim-beginner-guide/cover.jpg
 categories:
   - Tutorials
@@ -305,7 +305,7 @@ local function setup(name, config)
 
     local lsp = require("mason-lspconfig").get_mappings().package_to_lspconfig[name]
     config.capabilities = require("blink.cmp").get_lsp_capabilities() -- 新添加的内容
-    require("lspconfig")[lsp].setup(config)
+    vim.lsp.config(lsp, config)
 end
 ```
 
