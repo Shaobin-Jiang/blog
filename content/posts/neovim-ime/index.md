@@ -45,7 +45,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 
 在理清楚基本的实现思路后，我们接下来就需要针对不同的系统寻找不同的工具来进行输入法的切换了。在 windows 上，我推荐的工具是 [im-select](https://github.com/daipeihust/im-select)，你可以在 [https://github.com/daipeihust/im-select/raw/master/win/out/x86/im-select.exe](https://github.com/daipeihust/im-select/raw/master/win/out/x86/im-select.exe) 下载。
 
-在使用前，我们需要在设置的“语言和区域”中添加**英语**和**简体中文**这两种语言。其中，简体中文模式下我们可以选择是否启用拼音，例如根据你的设置的不同，可以用 <kbd>shift</kbd> 或 <kbd>ctrl</kbd> + <kbd>space</kbd> 切换中文和英文；而在英文模式下，我们无法使用中文输入法（所以我也比较推荐打游戏的时候开启这一语言选项）。默认情况下，我们使用按下 <kbd>wind</kbd> + <kbd>enter</kbd> 就可以在这两种模式之间进行切换，且，如果你在简体中文模式下启用了英文输入，然后切换到英文再切换回简体中文，此时仍然会启用英文输入。
+在使用前，我们需要在设置的“语言和区域”中添加**英语**和**简体中文**这两种语言。其中，简体中文模式下我们可以选择是否启用拼音，例如根据你的设置的不同，可以用 <kbd>shift</kbd> 或 <kbd>ctrl</kbd> + <kbd>space</kbd> 切换中文和英文；而在英文模式下，我们无法使用中文输入法（所以我也比较推荐打游戏的时候开启这一语言选项）。默认情况下，我们使用按下 <kbd>win</kbd> + <kbd>enter</kbd> 就可以在这两种模式之间进行切换，且，如果你在简体中文模式下启用了英文输入，然后切换到英文再切换回简体中文，此时仍然会启用英文输入。
 
 而使用 im-select 就可以通过程序控制这一过程。例如，`im-select.exe 1033` 就可以切换到英文，`im-select.exe 2052` 可以切换到简体中文。那么现在，我们就可以在 windows 下这样编写代码：
 
@@ -95,7 +95,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
     group = ime_autogroup,
     callback = function ()
         if PREVIOUS_IM_CODE_MAC then
-            vim.cmd(":silent :!macism " .. Ice.__PREVIOUS_IM_CODE_MAC)
+            vim.cmd(":silent :!macism " .. PREVIOUS_IM_CODE_MAC)
         end
         PREVIOUS_IM_CODE_MAC = nil
     end
