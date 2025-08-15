@@ -62,3 +62,7 @@ nvim-treesitter 进行了更新，默认分支不再是 master 而是 main，由
 ## P9: nvim-lspconfig 旧的配置 server 的 api 被废弃 (2025.6.13)
 
 新版本的 nvim-lspconfig 的 api 发生了调整，比如 `require("lspconfig")["lua_ls"].setup(config)` 要改成 `vim.lsp.config("lua_ls", config)`。
+
+## P12: nvim-treesitter 需要新的依赖
+
+你可能需要通过系统的包管理器安装 tree-sitter-cli，否则安装 parser 的时候会卡住不动。
