@@ -5,7 +5,7 @@ date: 2025-07-01 20:00:00
 lastmod: 2025-07-01 20:00:00
 image: cover.jpg
 categories:
-  - Tools
+  - Tutorials
 tags:
   - Editor
   - Neovim
