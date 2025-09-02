@@ -7,8 +7,8 @@ image: cover.jpg
 categories:
   - Tools
 tags:
-  - Editor
-  - Neovim
+  - editor
+  - neovim
 ---
 
 我曾经一直有一个问题：为什么我在重新启动 neovim 之后，此前我在 command line 输入过的命令仍然存在，上一次启动时使用过的 register 的内容仍然得以保留？不难猜到，neovim 一定是将这些内容保存在了某个文件里，在下一次启动后读取这个文件，以实现上述效果。然而，我既不知道这个文件到底是什么，也不知道它到底是何时被如何读取的。

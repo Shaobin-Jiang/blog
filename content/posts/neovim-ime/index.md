@@ -7,8 +7,8 @@ image: cover.jpg
 categories:
   - Tutorials
 tags:
-  - Editor
-  - Neovim
+  - editor
+  - neovim
 ---
 
 Neovim 的入门一直是一件相对困难的事情，而对于中国用户来说，这一过程又额外多出来了一些困难，那就是中文输入。
