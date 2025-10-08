@@ -1,6 +1,5 @@
 ---
 title: ''
-layout: links
 exclude: true
 readingTime: false
 ---
