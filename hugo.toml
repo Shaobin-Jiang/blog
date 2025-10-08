@@ -41,6 +41,23 @@ page = [
   { type = 'tag-cloud', params = { limit = 20 } },
 ]
 
+[params.comments]
+enabled = true
+provider = 'waline'
+
+[params.comments.waline]
+serverURL = 'https://comment.shaobin-jiang.com'
+path = 'window.location.pathname.replace(/\/$/,"")'
+lang = 'zh-CN'
+dark = 'html[data-scheme="dark"]'
+emoji = [
+  'https://cdn.jsdelivr.net/gh/walinejs/emojis/bmoji',
+  'https://cdn.jsdelivr.net/gh/walinejs/emojis/bilibili',
+  'https://cdn.jsdelivr.net/gh/walinejs/emojis/tieba'
+]
+imageUploader = false
+requiredMeta = ["nick", "mail"]
+
 [params.colorscheme]
 toggle = true
 default = 'light'
