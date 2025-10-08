@@ -7,7 +7,7 @@ timeZone = 'Asia/Shanghai'
 hasCJKLanguage = true
 
 [pagination]
-pagerSize = 6
+pagerSize = 8
 
 [taxonomies]
 genre = 'categories'
