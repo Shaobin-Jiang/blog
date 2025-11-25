@@ -99,7 +99,7 @@ c.content.headers.accept_language = "zh-CN;q=0.9,en-US,en;q=0.8"
 # 修改 header，伪装成 chrome。qutebrowser 的内核本就是 chromium，这样做问题不大
 c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 
-# 修改一下 hint 的外观已经备选的字母
+# 修改一下 hint 的外观以及备选的字母
 # 默认情况下这些字母只有 hjkl 那一行，这里我选择增加一行
 c.hints.padding = {"bottom": 1, "left": 5, "right": 3, "top": 1}
 c.hints.chars = "asdfghjklzxcvbnm"
@@ -168,7 +168,7 @@ for unbind_lhs in unbind:
     config.unbind(unbind_lhs)
 ```
 
-其中，<kbd>Alt</kbd> 系列（在 mac 上也就是 <kbd>opyion</kbd>）的快捷键是用于切换标签页的，但是因为我的 aerospace 也是用这些快捷键切换 workspace，所以我需要把这些解绑掉。至于其他的：
+其中，<kbd>Alt</kbd> 系列（在 mac 上也就是 <kbd>option</kbd>）的快捷键是用于切换标签页的，但是因为我的 aerospace 也是用这些快捷键切换 workspace，所以我需要把这些解绑掉。至于其他的：
 
 - <kbd>d</kbd>：关闭当前标签页；太容易误触了
 - <kbd>J</kbd> / <kbd>K</kbd>：前往左侧的 / 右侧的标签页；容易误触且不直观，明明标签页是左右排布的
